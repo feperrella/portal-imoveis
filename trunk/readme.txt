@@ -23,7 +23,7 @@ Portal Imóveis is a WordPress plugin that automatically generates an XML feed i
 **Key features:**
 
 * Automatic XML feed at `/wp-json/portalimoveis/v1/feed`
-* Custom Post Type "Imóvel" with full ACF field support
+* Custom Post Type "Imóvel" with full ACF (Advanced Custom Fields) support
 * Taxonomies: Property Type, Purpose, City & Neighborhood
 * Required field validation — incomplete listings are excluded from the feed
 * Admin dashboard with feed status, instructions, and technical field mapping
@@ -71,7 +71,7 @@ Portal Imóveis is a WordPress plugin that automatically generates an XML feed i
 
 * WordPress 6.0 or higher
 * PHP 8.0 or higher
-* Advanced Custom Fields PRO plugin installed and active
+* Advanced Custom Fields plugin installed and active
 
 = Where do I find the feed URL? =
 
