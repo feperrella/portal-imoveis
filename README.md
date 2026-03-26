@@ -16,30 +16,38 @@ Plugin WordPress que gera automaticamente um feed XML no formato OpenNavent para
 
 ## Instalação
 
-1. Clone ou baixe este repositório
-2. Copie a pasta `trunk/` para `/wp-content/plugins/portal-imoveis/`
+### Via WordPress.org (em breve)
+
+1. No painel do WordPress, acesse **Plugins → Adicionar Novo**
+2. Pesquise por **"Portal Imóveis"**
+3. Clique em **Instalar** e depois **Ativar**
+
+### Via GitHub (download direto)
+
+1. Baixe a última release: [Download v3.1.0](https://github.com/feperrella/portal-imoveis/releases/latest)
+2. No painel do WordPress, acesse **Plugins → Adicionar Novo → Enviar plugin**
+3. Selecione o arquivo `.zip` baixado e clique em **Instalar agora**
+4. Ative o plugin
+
+### Manual
+
+1. Baixe e extraia a [última release](https://github.com/feperrella/portal-imoveis/releases/latest)
+2. Copie a pasta para `/wp-content/plugins/portal-imoveis/`
 3. Ative o plugin no painel do WordPress
-4. Acesse **Portal Imóveis → Configurações** e preencha os dados
 
-## Estrutura (WordPress.org SVN)
+## Configuração
 
-```
-├── assets/          # Screenshots, ícone e banner do plugin
-│   ├── banner-1544x500.png
-│   ├── banner-772x250.png
-│   ├── icon-128x128.png
-│   ├── icon-256x256.png
-│   └── screenshot-1.png
-├── tags/            # Releases versionadas
-│   └── 3.1.0/
-├── trunk/           # Código de desenvolvimento atual
-│   ├── portal-imoveis.php
-│   ├── readme.txt
-│   ├── uninstall.php
-│   ├── CHANGELOG.md
-│   └── LICENSE
-└── README.md        # Este arquivo (GitHub)
-```
+1. Acesse **Portal Imóveis → Configurações** no menu do WordPress
+2. Preencha o **Código da Imobiliária** (fornecido pelo portal)
+3. Preencha os dados de contato (e-mail, nome, telefone)
+4. Cadastre imóveis preenchendo todos os campos obrigatórios
+5. Acesse **Portal Imóveis → Visão Geral** para verificar o status do feed
+
+### Integração com o portal
+
+1. Copie a URL do feed exibida em **Portal Imóveis → Visão Geral**
+2. No painel do portal (ex: ImovelWeb), vá em **Integração de Anúncios → XML**
+3. Cole a URL do feed e salve
 
 ## Feed XML
 
@@ -49,21 +57,12 @@ O feed é gerado automaticamente em:
 https://seusite.com.br/wp-json/portalimoveis/v1/feed
 ```
 
-## Deploy para WordPress.org SVN
+## Estrutura do repositório
 
-```bash
-# Checkout do SVN
-svn co https://plugins.svn.wordpress.org/portal-imoveis/ svn-portal-imoveis
-
-# Copiar arquivos do trunk
-cp trunk/* svn-portal-imoveis/trunk/
-
-# Criar tag
-svn cp svn-portal-imoveis/trunk svn-portal-imoveis/tags/3.1.0
-
-# Commit
-cd svn-portal-imoveis
-svn ci -m "Release 3.1.0" --username feperrella
+```
+├── assets/          # Screenshots, ícone e banner
+├── tags/3.1.0/      # Release estável (pronto para instalar)
+└── trunk/           # Código de desenvolvimento
 ```
 
 ## Licença
