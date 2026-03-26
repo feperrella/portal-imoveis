@@ -12,7 +12,7 @@ Plugin WordPress que gera automaticamente um feed XML no formato OpenNavent para
 
 - WordPress 6.0+
 - PHP 8.0+
-- [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/)
+- [Advanced Custom Fields](https://www.advancedcustomfields.com/)
 
 ## Instalação
 
