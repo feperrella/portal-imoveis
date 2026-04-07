@@ -1,10 +1,10 @@
 <?php
 /**
- * Uninstall Portal Imóveis
+ * Uninstall UQBITZ Hub de Integração Imobiliária
  *
  * Fired when the plugin is uninstalled.
  *
- * @package Portal_Imoveis
+ * @package UQBITZ_Hub_Imoveis
  */
 
 // If uninstall not called from WordPress, die.

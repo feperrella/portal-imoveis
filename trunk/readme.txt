@@ -1,4 +1,4 @@
-=== Portal Imóveis ===
+=== UQBITZ Hub de Integracao Imobiliaria ===
 Contributors: feperrella
 Tags: real-estate, xml, feed, property, opennavent
 Requires at least: 6.5
@@ -12,7 +12,7 @@ Generates an OpenNavent XML feed to sync WordPress property listings with real e
 
 == Description ==
 
-Portal Imóveis is a WordPress plugin that automatically generates an XML feed in the OpenNavent format to synchronize property listings with major Brazilian real estate portals.
+UQBITZ Hub de Integração Imobiliária is a WordPress plugin that automatically generates an XML feed in the OpenNavent format to synchronize property listings with major Brazilian real estate portals.
 
 **Supported portals:**
 
@@ -48,13 +48,13 @@ Portal Imóveis is a WordPress plugin that automatically generates an XML feed i
 
 == Installation ==
 
-1. Upload the `portal-imoveis` folder to `/wp-content/plugins/`
+1. Upload the `uqbitz-hub-imoveis` folder to `/wp-content/plugins/`
 2. Activate the plugin in the WordPress dashboard
-3. Go to **Portal Imóveis → Settings** and fill in:
+3. Go to **Hub Imóveis → Settings** and fill in:
    * Real estate agency code (provided by the portal)
    * Contact email, name, and phone
 4. Add property listings with all required fields filled in
-5. Go to **Portal Imóveis → Overview** to check feed status
+5. Go to **Hub Imóveis → Overview** to check feed status
 6. Copy the feed URL and register it in the desired portal
 
 **Portal setup (ImovelWeb):**
@@ -75,11 +75,11 @@ Portal Imóveis is a WordPress plugin that automatically generates an XML feed i
 
 = Where do I find the feed URL? =
 
-Go to **Portal Imóveis → Overview** in the WordPress dashboard. The URL is displayed at the top, in the format: `https://yoursite.com/wp-json/portalimoveis/v1/feed`
+Go to **Hub Imóveis → Overview** in the WordPress dashboard. The URL is displayed at the top, in the format: `https://yoursite.com/wp-json/portalimoveis/v1/feed`
 
 = Why is a property not showing in the feed? =
 
-Properties with incomplete required fields are automatically excluded. Go to **Portal Imóveis → Overview** to see the list of issues for each property.
+Properties with incomplete required fields are automatically excluded. Go to **Hub Imóveis → Overview** to see the list of issues for each property.
 
 = Can I use this on multiple sites? =
 
@@ -112,12 +112,12 @@ No. The XML feed is a public URL consumed by the portal. You only need the agenc
 * Added: Expanded validation — IPTU, property age, condo fee (conditional), full address required
 * Changed: Optimized layout — infrastructure, gallery, floor plans, video at full width
 * Changed: Infrastructure checkbox layout set to horizontal
-* Changed: "Portal Imóveis" menu repositioned below the Imóveis CPT
+* Changed: "Hub Imóveis" menu repositioned below the Imóveis CPT
 
 = 3.0.0 =
 * Added: Admin dashboard with 3 pages: Overview, Settings, Field Mapping
 * Added: Required field validation in XML feed
-* Changed: Plugin rebranded from client-specific to generic "Portal Imóveis"
+* Changed: Plugin rebranded from client-specific to generic "UQBITZ Hub de Integração Imobiliária"
 * Changed: REST API namespace changed to `portalimoveis/v1`
 
 = 2.8.0 =

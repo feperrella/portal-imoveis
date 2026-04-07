@@ -1,6 +1,6 @@
 # Changelog
 
-Todas as mudanças notáveis do plugin Portal Imóveis serão documentadas neste arquivo.
+Todas as mudanças notáveis do plugin UQBITZ Hub de Integração Imobiliária serão documentadas neste arquivo.
 
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
@@ -27,7 +27,7 @@ e este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ### Alterado
 - Layout da Infraestrutura para horizontal (items lado a lado, igual Amenidades)
 - Galeria, Plantas e Vídeo YouTube agora em largura total
-- Menu "Portal Imóveis" reposicionado logo abaixo do CPT Imóveis
+- Menu "Hub Imóveis" reposicionado logo abaixo do CPT Imóveis
 - Autor atualizado para "Fernando Perrella (UQBITZ)"
 
 ## [3.0.0] - 2026-03-25
@@ -39,7 +39,7 @@ e este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - readme.txt no formato WordPress.org
 
 ### Alterado
-- Plugin renomeado de "Imóveis Amaro" para "Portal Imóveis"
+- Plugin renomeado de "Imóveis Amaro" para "UQBITZ Hub de Integração Imobiliária"
 - Namespace REST API: `imoveisamaro/v1` → `portalimoveis/v1`
 - Prefixo de funções: `iamaro_` → `ptim_`
 - Feed URL: `/wp-json/portalimoveis/v1/feed`

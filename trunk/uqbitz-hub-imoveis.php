@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Portal Imóveis
- * Plugin URI:  https://github.com/feperrella/portal-imoveis
+ * Plugin Name: UQBITZ Hub de Integracao Imobiliaria
+ * Plugin URI:  https://github.com/feperrella/uqbitz-hub-imoveis
  * Description: Generates an OpenNavent XML feed to sync WordPress property listings with real estate portals (ImovelWeb, Wimoveis, Casa Mineira).
  * Version:     3.2.0
  * Author:      Fernando Perrella (UQBITZ)
  * Author URI:  https://uqbitz.com
  * License:     GPL-2.0+
- * Text Domain: portal-imoveis
+ * Text Domain: uqbitz-hub-imoveis
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Requires Plugins: advanced-custom-fields
@@ -1609,22 +1609,21 @@ function ptim_auto_assign_location_terms( $post_id ) {
 }
 
 /* ──────────────────────────────────────────────
- * ADMIN PAGES — Portal Imóveis
+ * ADMIN PAGES — UQBITZ Hub de Integração Imobiliária
  * ────────────────────────────────────────────── */
 add_action( 'admin_menu', 'ptim_admin_menu' );
 function ptim_admin_menu() {
     add_menu_page(
-        'Portal Imóveis',
-        'Portal Imóveis',
+        'UQBITZ Hub de Integração Imobiliária',
+        'Hub Imóveis',
         'manage_options',
         'ptim-portal',
         'ptim_page_main',
-        'dashicons-building',
-        4
+        'dashicons-building'
     );
     add_submenu_page(
         'ptim-portal',
-        'Portal Imóveis',
+        'UQBITZ Hub de Integração Imobiliária',
         'Visão Geral',
         'manage_options',
         'ptim-portal',
@@ -1632,7 +1631,7 @@ function ptim_admin_menu() {
     );
     add_submenu_page(
         'ptim-portal',
-        'Configurações — Portal Imóveis',
+        'Configurações — Hub Imóveis',
         'Configurações',
         'manage_options',
         'ptim-settings',
@@ -1640,7 +1639,7 @@ function ptim_admin_menu() {
     );
     add_submenu_page(
         'ptim-portal',
-        'Mapeamento — Portal Imóveis',
+        'Mapeamento — Hub Imóveis',
         'Mapeamento',
         'manage_options',
         'ptim-mapping',
@@ -1697,7 +1696,7 @@ function ptim_page_main() {
     }
 
     echo '<div class="wrap">';
-    echo '<h1>🏠 Portal Imóveis</h1>';
+    echo '<h1>🏠 UQBITZ Hub de Integração Imobiliária</h1>';
     echo '<p>Integração XML com portais imobiliários: <strong>ImovelWeb</strong>, <strong>Wimoveis</strong> e <strong>Casa Mineira</strong>.</p>';
     echo '<hr>';
 
@@ -1718,7 +1717,7 @@ function ptim_page_main() {
     echo '<h2>📖 Como usar</h2>';
     echo '<div style="max-width:700px;background:#fff;border:1px solid #ccd0d4;padding:15px 20px;border-radius:4px">';
     echo '<h3 style="margin-top:0">1. Preencha as configurações</h3>';
-    echo '<p>Acesse <a href="' . esc_url( admin_url( 'admin.php?page=ptim-settings' ) ) . '"><strong>Portal Imóveis → Configurações</strong></a> e preencha o código da imobiliária e dados de contato.</p>';
+    echo '<p>Acesse <a href="' . esc_url( admin_url( 'admin.php?page=ptim-settings' ) ) . '"><strong>Hub Imóveis → Configurações</strong></a> e preencha o código da imobiliária e dados de contato.</p>';
     echo '<h3>2. Cadastre os imóveis</h3>';
     echo '<p>Preencha todos os campos obrigatórios de cada imóvel (descrição com no mínimo 50 caracteres, pelo menos 5 fotos, preço, tipo, finalidade, CEP e área).</p>';
     echo '<p><strong>Importante:</strong></p>';
@@ -1769,7 +1768,7 @@ function ptim_page_main() {
 /* ── Subpágina: Configurações ── */
 function ptim_page_settings() {
     echo '<div class="wrap">';
-    echo '<h1>⚙️ Configurações — Portal Imóveis</h1>';
+    echo '<h1>⚙️ Configurações — Hub Imóveis</h1>';
     echo '<p>Dados usados na integração XML com os portais imobiliários.</p>';
     echo '<form method="post" action="options.php">';
     settings_fields( 'ptim_settings_group' );
@@ -1801,7 +1800,7 @@ function ptim_page_settings() {
 /* ── Subpágina: Mapeamento ── */
 function ptim_page_mapping() {
     echo '<div class="wrap">';
-    echo '<h1>🗂️ Mapeamento — Portal Imóveis</h1>';
+    echo '<h1>🗂️ Mapeamento — Hub Imóveis</h1>';
     echo '<p>Referência técnica: campos ACF e taxonomias usados na geração do XML do feed.</p>';
 
     echo '<h2>Campos ACF</h2>';
