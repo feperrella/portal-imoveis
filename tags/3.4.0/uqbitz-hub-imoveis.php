@@ -10,10 +10,30 @@
  * Text Domain: uqbitz-hub-imoveis
  * Requires at least: 6.5
  * Requires PHP: 8.0
- * Requires Plugins: advanced-custom-fields
  */
 
 defined( 'ABSPATH' ) || exit;
+
+/* ──────────────────────────────────────────────
+ * ACF DEPENDENCY CHECK — aceita ACF free ou ACF Pro
+ * ────────────────────────────────────────────── */
+add_action( 'admin_init', 'uqbhi_check_acf_dependency' );
+function uqbhi_check_acf_dependency() {
+    if ( class_exists( 'ACF' ) ) {
+        return;
+    }
+    add_action( 'admin_notices', function () {
+        $install_url = wp_nonce_url(
+            admin_url( 'update.php?action=install-plugin&plugin=advanced-custom-fields' ),
+            'install-plugin_advanced-custom-fields'
+        );
+        echo '<div class="notice notice-error"><p>';
+        echo '<strong>UQBITZ Hub de Integração Imobiliária</strong> requer o plugin ';
+        echo '<strong>Advanced Custom Fields</strong> (gratuito ou Pro) para funcionar. ';
+        echo '<a href="' . esc_url( $install_url ) . '">Clique aqui para instalar o ACF gratuitamente</a>.';
+        echo '</p></div>';
+    } );
+}
 
 /* ──────────────────────────────────────────────
  * CONSTANTES

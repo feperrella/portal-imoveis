@@ -71,7 +71,7 @@ UQBITZ Hub de Integração Imobiliária is a WordPress plugin that automatically
 
 * WordPress 6.0 or higher
 * PHP 8.0 or higher
-* Advanced Custom Fields plugin installed and active
+* Advanced Custom Fields (free or Pro) installed and active
 
 = Where do I find the feed URL? =
 
