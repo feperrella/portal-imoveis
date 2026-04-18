@@ -3,7 +3,7 @@ Contributors: feperrella
 Tags: real-estate, xml, feed, property, opennavent
 Requires at least: 6.5
 Tested up to: 6.9
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -102,6 +102,9 @@ No. The XML feed is a public URL consumed by the portal. You only need the agenc
 
 == Changelog ==
 
+= 3.4.2 =
+* Added: automatic seeding of the official `uqbhi_tipo` and `uqbhi_finalidade` terms on activation and versioned `admin_init`
+
 = 3.4.1 =
 * Changed: WordPress Coding Standards compliance — tabs, docblocks, brace style across all files
 
@@ -156,6 +159,9 @@ No. The XML feed is a public URL consumed by the portal. You only need the agenc
 * Initial release: single-file plugin rewrite with REST API XML feed
 
 == Upgrade Notice ==
+
+= 3.4.2 =
+Default taxonomy terms are now seeded automatically on activation.
 
 = 3.4.1 =
 Code formatting only — no functional changes.

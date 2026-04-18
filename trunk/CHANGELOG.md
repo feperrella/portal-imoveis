@@ -5,6 +5,12 @@ Todas as mudanças notáveis do plugin UQBITZ Hub de Integração Imobiliária s
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto segue [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
+## [3.4.2] - 2026-04-18
+
+### Adicionado
+- Seed automático dos termos oficiais de `uqbhi_tipo` e `uqbhi_finalidade` na ativação
+- Reexecução idempotente do seed no `admin_init` quando a versão muda
+
 ## [3.4.1] - 2026-04-08
 
 ### Alterado
