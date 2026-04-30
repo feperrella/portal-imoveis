@@ -393,9 +393,10 @@ function uqbhi_page_mapping() {
 	echo '<div class="wrap">';
 	echo '<h1>🗂️ Mapeamento — Hub Imóveis</h1>';
 	echo '<p>Referência técnica: campos ACF e taxonomias usados na geração do XML do feed.</p>';
+	echo '<p><strong>Galerias:</strong> no Elementor, use <em>Variável → Galeria imóvel</em> ou <em>Planta imóvel</em> no Dynamic Tag <code>Galeria imóvel</code>.</p>';
 
 	echo '<h2>Campos ACF</h2>';
-	echo '<p>Use estes nomes nos templates do Elementor (Dynamic Tags → ACF Field):</p>';
+	echo '<p>Use estes nomes nos templates do Elementor quando precisar dos campos do imóvel:</p>';
 	echo '<table class="widefat striped" style="max-width:700px">';
 	echo '<thead><tr><th>Campo</th><th>Nome técnico</th><th>Tipo</th><th>Obrigatório no XML</th></tr></thead><tbody>';
 	$fields = array(

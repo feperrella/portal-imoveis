@@ -18,6 +18,13 @@ add_action( 'add_meta_boxes_uqbhi_imovel', 'uqbhi_fallback_gallery_register' );
 add_action( 'save_post_uqbhi_imovel', 'uqbhi_fallback_gallery_save', 10, 2 );
 add_action( 'admin_enqueue_scripts', 'uqbhi_fallback_gallery_enqueue' );
 
+if ( ! uqbhi_has_acf_pro_gallery() ) {
+	add_filter( 'acf/load_value/name=galeria_de_imagens', 'uqbhi_fallback_gallery_acf_format_value', 20, 3 );
+	add_filter( 'acf/format_value/name=galeria_de_imagens', 'uqbhi_fallback_gallery_acf_format_value', 20, 3 );
+	add_filter( 'acf/load_value/name=plantas', 'uqbhi_fallback_gallery_acf_format_value', 20, 3 );
+	add_filter( 'acf/format_value/name=plantas', 'uqbhi_fallback_gallery_acf_format_value', 20, 3 );
+}
+
 /**
  * Register the two fallback gallery metaboxes on the imóvel edit screen.
  */
@@ -112,6 +119,113 @@ function uqbhi_fallback_gallery_render_field( $post, $meta_key, $instructions ) 
 		<input type="hidden" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $csv ); ?>" class="uqbhi-gallery-input" />
 	</div>
 	<?php
+}
+
+/**
+ * Format the fallback gallery value like ACF Pro would do for a gallery field.
+ *
+ * This keeps the stored value as attachment IDs, but exposes an array of
+ * attachment objects for consumers such as Elementor / ACF integrations.
+ *
+ * @param mixed $value  Stored meta value.
+ * @param int   $post_id Post ID.
+ * @param array $field  ACF field definition.
+ * @return array
+ */
+function uqbhi_fallback_gallery_acf_format_value( $value, $post_id = 0, $field = array() ) {
+	return uqbhi_fallback_gallery_normalize_items( $value );
+}
+
+/**
+ * Normalize any gallery-like value into an ACF-style array of attachments.
+ *
+ * @param mixed $value Raw meta value or already formatted field value.
+ * @return array
+ */
+function uqbhi_fallback_gallery_normalize_items( $value ) {
+	if ( empty( $value ) || ! is_array( $value ) ) {
+		return array();
+	}
+
+	$items = array();
+	foreach ( $value as $item ) {
+		if ( is_array( $item ) && ! empty( $item['ID'] ) ) {
+			$normalized = uqbhi_fallback_gallery_attachment_to_acf( (int) $item['ID'] );
+		} elseif ( is_array( $item ) && ! empty( $item['id'] ) ) {
+			$normalized = uqbhi_fallback_gallery_attachment_to_acf( (int) $item['id'] );
+		} elseif ( is_numeric( $item ) ) {
+			$normalized = uqbhi_fallback_gallery_attachment_to_acf( (int) $item );
+		} else {
+			$normalized = array();
+		}
+
+		if ( ! empty( $normalized ) ) {
+			$items[] = $normalized;
+		}
+	}
+
+	return $items;
+}
+
+/**
+ * Convert an attachment ID into an ACF Pro-like gallery item array.
+ *
+ * @param int $attachment_id Attachment ID.
+ * @return array
+ */
+function uqbhi_fallback_gallery_attachment_to_acf( $attachment_id ) {
+	$attachment_id = (int) $attachment_id;
+	if ( $attachment_id <= 0 || 'attachment' !== get_post_type( $attachment_id ) ) {
+		return array();
+	}
+
+	$attachment = get_post( $attachment_id );
+	if ( ! $attachment ) {
+		return array();
+	}
+
+	$mime_type = get_post_mime_type( $attachment_id );
+	$meta      = wp_get_attachment_metadata( $attachment_id );
+	$url       = wp_get_attachment_url( $attachment_id );
+	$alt       = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+
+	$sizes = array();
+	foreach ( array( 'thumbnail', 'medium', 'medium_large', 'large', 'full' ) as $size ) {
+		$img = wp_get_attachment_image_src( $attachment_id, $size );
+		if ( ! empty( $img[0] ) ) {
+			$sizes[ $size ] = array(
+				'url'    => $img[0],
+				'width'  => ! empty( $img[1] ) ? (int) $img[1] : 0,
+				'height' => ! empty( $img[2] ) ? (int) $img[2] : 0,
+				'mime-type' => $mime_type,
+			);
+		}
+	}
+
+	return array(
+		'ID'          => $attachment_id,
+		'id'          => $attachment_id,
+		'title'       => get_the_title( $attachment_id ),
+		'filename'    => basename( get_attached_file( $attachment_id ) ),
+		'url'         => $url,
+		'alt'         => $alt,
+		'author'      => (int) $attachment->post_author,
+		'description' => $attachment->post_content,
+		'caption'     => $attachment->post_excerpt,
+		'name'        => $attachment->post_name,
+		'status'      => $attachment->post_status,
+		'uploaded_to' => (int) $attachment->post_parent,
+		'date'        => $attachment->post_date,
+		'modified'    => $attachment->post_modified,
+		'menu_order'  => (int) $attachment->menu_order,
+		'mime_type'   => $mime_type,
+		'type'        => 0 === strpos( (string) $mime_type, 'image/' ) ? 'image' : 'file',
+		'subtype'     => $mime_type ? str_replace( 'image/', '', (string) $mime_type ) : '',
+		'icon'        => wp_mime_type_icon( $mime_type ),
+		'width'       => ! empty( $meta['width'] ) ? (int) $meta['width'] : 0,
+		'height'      => ! empty( $meta['height'] ) ? (int) $meta['height'] : 0,
+		'sizes'       => $sizes,
+	);
 }
 
 /**

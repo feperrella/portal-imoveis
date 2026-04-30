@@ -64,10 +64,11 @@ require UQBHI_PATH . 'includes/cpt.php';
 require UQBHI_PATH . 'includes/helpers.php';
 require UQBHI_PATH . 'includes/feed.php';
 require UQBHI_PATH . 'includes/acf-fields.php';
+require UQBHI_PATH . 'includes/gallery-fallback.php';
+require UQBHI_PATH . 'includes/elementor-dynamic-tags.php';
 
 if ( is_admin() ) {
 	require UQBHI_PATH . 'includes/admin.php';
-	require UQBHI_PATH . 'includes/gallery-fallback.php';
 }
 
 /*
